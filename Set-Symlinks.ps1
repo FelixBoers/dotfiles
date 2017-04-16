@@ -1,8 +1,22 @@
-if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {   
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
     $arguments = "& '" + $myinvocation.mycommand.definition + "'"
     Start-Process powershell -Verb runAs -ArgumentList $arguments
     Break
 }
+
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+
+namespace mklink
+{
+    public class hardlink
+    {
+        [DllImport("Kernel32.dll")]
+        public static extern bool CreateHardLink(string lpFileName,string lpExistingFileName,IntPtr lpSecurityAttributes);
+    }
+}
+"@
 
 $machineDir = "$PSScriptRoot\$env:COMPUTERNAME"
 $domainDir = "$PSScriptRoot\$env:USERDOMAIN"
@@ -19,7 +33,17 @@ function Set-Symlink {
     process {
         foreach ($file in $dotfiles) {
             $path = Join-Path $env:USERPROFILE $file.Name
-            New-Item -Path $path -ItemType SymbolicLink -Value $file.FullName -Force
+            if (Test-Path $path) {
+                Remove-Item $path -Force
+            }
+
+            Write-Host "Create file $path ... " -NoNewLine
+            $result = [mklink.hardlink]::CreateHardLink(
+                $path,
+                $file.FullName,
+                [IntPtr]::Zero
+            )
+            Write-Host $result
         }
     }
 }
