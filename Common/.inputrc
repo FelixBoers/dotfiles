@@ -1,0 +1,9 @@
+# list all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# flip through autocompletion matches with shift-tab
+"\e[Z": menu-complete
+
+# filtered history search
+"\e[A": history-search-backward
+"\e[B": history-search-forward
