@@ -126,7 +126,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'                  # list all files in detailed list
-alias la='ls -A'                    # list all files excluding . and .. in columns 
+alias la='ls -A'                    # list all files excluding . and .. in columns
 alias ld='ls -d .*/ */'             # list only directories - include hidden directories
 alias l='ls -CF'
 
@@ -143,7 +143,7 @@ function findAndOpenSln {
 		return
 	fi
 
-	if [ $count -eq 1 ]; then		
+	if [ $count -eq 1 ]; then
 		opt=${files[0]}
 		return
 	fi
@@ -153,15 +153,14 @@ function findAndOpenSln {
 		PS3="Pick a solution: "
 		select opt in "${files[@]}"; do
 			case $REPLY in
-				+([0-9])) 
+				+([0-9]))
 					if (( $REPLY > 0 && $REPLY <= $count )); then
 						break
 					fi;;
-			esac	
+			esac
 		done
 	fi
 
 	echo "Open solution: $opt"
 	start "$opt"
 }
-

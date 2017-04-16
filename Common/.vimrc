@@ -89,11 +89,11 @@ let g:badwolf_darkgutter = 1
 "===================================================
 set showcmd			            " show command you have typed at the right bottom
 set ruler			            " show the cursor position all the time
-set showmode			
+set showmode
 set number			            " show line numbers
 set relativenumber
 set wildmenu			        " visual autocompletion for command menu
-set lazyredraw			
+set lazyredraw
 set nocursorline
 set showmatch			        " automatically show matching brackets
 set splitbelow
@@ -124,7 +124,7 @@ nnoremap <C-h> <C-W><C-H>
 " tab navigation
 nnoremap <leader>n <ESC>:tabprevious<CR>
 nnoremap <leader>m <ESC>:tabnext<CR>
-                
+
 " paste multiple times
 nnoremap p pgvy
 
@@ -141,10 +141,10 @@ nnoremap <S-Enter> O<Esc>j
 nnoremap <CR> o<Esc>k
 
 " easier moving of code blocks
-vnoremap < <gv 
+vnoremap < <gv
 vnoremap > >gv
 
-" quick save command 
+" quick save command
 noremap <F2> :update<CR>
 vnoremap <F2> <C-C>:update<CR>
 inoremap <F2> <C-O>:update<CR>
