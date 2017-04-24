@@ -112,6 +112,8 @@ alias sln='findAndOpenSln'
 
 alias e='explorer .'
 
+alias vim='/c/Program\ Files\ \(x86\)/vim/vim80/vim.exe'
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"

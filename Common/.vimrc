@@ -20,11 +20,8 @@ Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mtth/scratch.vim'
 Plugin 'vim-scripts/BufOnly.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/badwolf'
 Plugin 'scrooloose/syntastic.git'
-Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            	" required
 filetype plugin indent on    	" required
@@ -149,6 +146,13 @@ noremap <F2> :update<CR>
 vnoremap <F2> <C-C>:update<CR>
 inoremap <F2> <C-O>:update<CR>
 
+" clear search highlight
+nnoremap <esc> :noh<return><esc>
+
+" unindent via Shift+Tab
+nnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
+
 "===================================================
 " PLUGIN CONFIGURATIONS
 "===================================================
@@ -162,17 +166,6 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#fnamecollapse = 0
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline_powerline_fonts = 1
-set laststatus=2
 
 " CtrlP
 let g:ctrlp_match_window='bottom,order:ttb'
