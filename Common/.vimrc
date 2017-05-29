@@ -130,7 +130,6 @@ set splitright
 set fo-=t                       " don't automatically warp text when typing
 set nowrap                      " don't automatically wrap on load
 
-
 "netrw
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
@@ -220,14 +219,16 @@ map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "===================================================
 
 " PYTHON: enable PEP8 indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+function! s:ConfigurePython()
+    setlocal tabstop=4
+    setlocal softtabstop=4
+    setlocal shiftwidth=4
+    setlocal textwidth=79
+    setlocal expandtab
+    setlocal autoindent
+    setlocal fileformat=unix
+endfunction
+au BufNewFile,BufRead *.py call s:ConfigurePython()
 
 " Mark bad whitespaces
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
