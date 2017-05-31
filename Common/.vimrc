@@ -84,6 +84,9 @@ nnoremap <space> za
 set nobackup
 set noswapfile
 
+" select pasted text
+nnoremap gp `[v`]
+
 " status line
 function! StatuslineGit()
   let l:branchname = gitbranch#name()
@@ -103,6 +106,7 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
+set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=\ 
 
 "===================================================
@@ -251,14 +255,11 @@ EOF
 let g:ycm_autoclose_preview_window_after_completion=1
 
 " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
+let g:syntastic_javascript_checkers = ['jshint']
 
 " CtrlP
 let g:ctrlp_match_window='bottom,order:ttb'
