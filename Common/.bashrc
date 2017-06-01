@@ -77,6 +77,8 @@ __git_complete gaap _git_add
 
 alias gd='g diff'
 __git_complete gd _git_diff
+alias gdc='g diff --cached'
+__git_complete gdc _git_diff
 
 alias glg='g log --oneline --decorate --graph'
 __git_complete glg _git_log
