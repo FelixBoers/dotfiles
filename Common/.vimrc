@@ -71,7 +71,7 @@ set noundofile
 
 " searching
 set incsearch			        " search as characters are inserted
-set hlsearch			        " highlight search matches
+" set hlsearch			        " highlight search matches
 set ignorecase smartcase	    " case-insensitive search by default
 
 " folding
@@ -235,7 +235,7 @@ endfunction
 au BufNewFile,BufRead *.py call s:ConfigurePython()
 
 " Mark bad whitespaces
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " python with virtualenv support
 py << EOF
@@ -265,6 +265,8 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:ctrlp_match_window='bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = '\v[\/](\.git|\.svn|node_modules)'
 
 " SimpylFold
 let g:SimpylFold_docstring_preview=1
+

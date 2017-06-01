@@ -130,6 +130,8 @@ alias la='ls -A'                    # list all files excluding . and .. in colum
 alias ld='ls -d .*/ */'             # list only directories - include hidden directories
 alias l='ls -CF'
 
+alias godev='cd /c/Projects/'
+
 function findAndOpenSln {
 	files=(); opt=; count=;
 	while IFS= read -r -d $'\0'; do
