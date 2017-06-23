@@ -106,6 +106,11 @@ alias gsvnb='g svn branch'
 __git_complete gsvnb _git_svn
 alias gsvnm='g merge-svn'
 
+alias gdt='g difftool'
+__git_complete gdt _git_difftool
+alias gmt='g mergetool'
+__git_complete gdt _git_mergetool
+
 alias gui='gitk --all &'
 alias gex='gitextensions browse ${pwd} &'
 alias sln='findAndOpenSln'

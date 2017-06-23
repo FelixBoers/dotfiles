@@ -26,7 +26,6 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bitc/vim-bad-whitespace'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'PProvost/vim-ps1'
 

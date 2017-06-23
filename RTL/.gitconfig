@@ -7,9 +7,19 @@
 	tool = kdiff3
 [diff]
 	guitool = kdiff3
+[diff "localizablestrings"]
+    textconv = "iconv -f utf-16le -t utf-8"	
 [http]
 	proxy = http://meta-proxy.netrtl.com:8080
 	sslVerify = false
 [svn]
 	rmdir = true
 	pushmergeinfo = true
+[difftool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
+	trustExitCode = false
+[mergetool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
+	trustExitCode = false
+[difftool]
+	prompt = false
