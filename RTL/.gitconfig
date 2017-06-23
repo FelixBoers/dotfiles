@@ -21,5 +21,8 @@
 [mergetool "kdiff3"]
 	path = C:/Program Files/KDiff3/kdiff3.exe
 	trustExitCode = false
+	keeptemporaries = false
+    keepbackups = false
+    prompt = false
 [difftool]
 	prompt = false

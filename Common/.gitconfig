@@ -2,14 +2,20 @@
 	name = Felix Boers
 	email = felix.boers@hotmail.com
 [core]
-	editor = vim
+	editor = \"C:/Program Files (x86)/Vim/vim80/vim.exe\"
 [merge]
 	tool = kdiff3
 [diff]
 	guitool = kdiff3
 [http]
 	sslVerify = false
+[difftool]
+	prompt = false
+[difftool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
+	trustExitCode = false
 [mergetool]
+	path = C:/Program Files/KDiff3/kdiff3.exe
     keeptemporaries = false
     keepbackups = false
     prompt = false
@@ -19,3 +25,6 @@
 	pushmergeinfo = true
 [push]
 	default = matching
+[svn]
+	rmdir = true
+	pushmergeinfo = true
