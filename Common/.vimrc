@@ -28,6 +28,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'itchyny/vim-gitbranch'
 Plugin 'PProvost/vim-ps1'
+Plugin 'OmniSharp/omnisharp-vim'
 
 call vundle#end()            	" required
 filetype plugin indent on    	" required
@@ -72,6 +73,7 @@ set noundofile
 set incsearch			        " search as characters are inserted
 " set hlsearch			        " highlight search matches
 set ignorecase smartcase	    " case-insensitive search by default
+set gdefault                    " global substitution by default :%s/foo/bar/g
 
 " folding
 set foldenable
@@ -108,8 +110,12 @@ set statusline+=\ %l:%c
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=\ 
 
+" shell
+" set shell=powershell
+" set shellcmdflag=-command
+
 "===================================================
-" COLOR
+" APPEREANCE
 "===================================================
 syntax on
 set background=dark
@@ -126,14 +132,38 @@ set number			            " show line numbers
 set relativenumber
 set wildmenu			        " visual autocompletion for command menu
 set lazyredraw
-set nocursorline
+set cursorline
 set showmatch			        " automatically show matching brackets
 set splitbelow
 set splitright
 set fo-=t                       " don't automatically warp text when typing
 set nowrap                      " don't automatically wrap on load
+set textwidth=79
+set formatoptions=qrn1
+set colorcolumn=85
 
-"netrw
+" status line
+function! StatuslineGit()
+  let l:branchname = gitbranch#name()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=%{StatuslineGit()}
+set statusline+=%#LineNr#
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=%=
+set statusline+=%#CursorColumn#
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
+set statusline+=\
+
+" netrw
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_liststyle = 3 " Liststyle: tree
@@ -184,7 +214,7 @@ nnoremap <leader>n <ESC>:tabprevious<CR>
 nnoremap <leader>m <ESC>:tabnext<CR>
 
 " paste multiple times
-nnoremap p pgvy
+" nnoremap p pgvy
 
 " parenthesis
 onoremap p i(
@@ -193,6 +223,10 @@ onoremap ilp :<c-u>normal! F)vi(<cr>
 
 " save with sudo rights
 cmap w!! w !sudo teek %
+
+" match brackets
+nnoremap <tab> %
+vnoremap <tab> %
 
 " newline before/after cursor without going to insert mode
 nnoremap <S-Enter> O<Esc>j
@@ -249,7 +283,6 @@ EOF
 "===================================================
 " PLUGIN CONFIGURATIONS
 "===================================================
-
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 

@@ -15,3 +15,7 @@ map <F11> <Esc>:call ToggleGUICruft()<cr>
 set guioptions=i
 
 set mousefocus
+
+set sessionoptions+=resize,winpos
+autocmd VIMEnter * :source ~/.vim/.session.vim
+autocmd VIMLeave * :mksession! ~/.vim/.session.vim
